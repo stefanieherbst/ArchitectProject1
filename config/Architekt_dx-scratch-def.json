@@ -1,0 +1,9 @@
+{
+  "orgName": "Architekt_dx",
+  "edition": "Developer",
+  "hasSampleData": false,
+  "features": [
+    "ProcessBuilder",
+    "RecordTypes"
+  ]
+}

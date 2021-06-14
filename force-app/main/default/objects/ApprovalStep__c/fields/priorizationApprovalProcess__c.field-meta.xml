@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>priorizationApprovalProcess__c</fullName>
+    <externalId>false</externalId>
+    <label>priorizationApprovalProcess</label>
+    <referenceTo>priorizationApprovalProcess_c__c</referenceTo>
+    <relationshipLabel>ApprovalSteps</relationshipLabel>
+    <relationshipName>ApprovalSteps</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

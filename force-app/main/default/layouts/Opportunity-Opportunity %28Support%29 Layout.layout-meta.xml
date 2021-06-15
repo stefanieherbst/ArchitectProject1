@@ -45,6 +45,10 @@
                 <behavior>Edit</behavior>
                 <field>Product_Family__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>priorization__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -245,7 +249,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>priorizationApprovalProcess_c__c.Opportunity__c</relatedList>
+        <relatedList>priorizationApprovalProcess__c.Opportunity__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>

@@ -2,7 +2,11 @@
  * Created by StefanieHerbst on 6/2/2021.
  */
 
-public with sharing class priorizationApprovlProcessTriggerHandler {
+public with sharing class priorizationApprovlProcessHandler  extends TriggerHandlerExtension{
+
+    public priorizationApprovlProcessHandler(){
+        super();
+    }
 
     private void beforeInsert(List<priorizationApprovalProcess__c> listNew) {
         erstelleApprovalStepsmitHilfeVonMatrix(listNew);

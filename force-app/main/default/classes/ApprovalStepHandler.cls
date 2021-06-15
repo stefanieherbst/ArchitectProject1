@@ -2,7 +2,11 @@
  * Created by StefanieHerbst on 6/2/2021.
  */
 
-public with sharing class ApprovalStepTriggerHandler {
+public with sharing class ApprovalStepHandler extends TriggerHandlerExtension{
+
+    public ApprovalStepHandler(){
+        super();
+    }
 
     private void beforeInsert(List<ApprovalStep__c> listNew) {
         Map<id, id> userProcessIdMap = nehmeUserMitRichtigemUserAssignment(listNew);

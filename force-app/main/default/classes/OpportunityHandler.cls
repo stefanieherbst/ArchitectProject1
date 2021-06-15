@@ -2,14 +2,22 @@
  * Created by StefanieHerbst on 6/2/2021.
  */
 
-public with sharing class OpportunityTriggerHandler {
+public class OpportunityHandler extends TriggerHandlerExtension{
 
-    private void beforeInsert(Map<id, Opportunity> oppMapOld, Map<id, Opportunity> oppMapNew) {
-        priorizationApprovalProcess(null, oppMapNew);
+    public OpportunityHandler(){
+        super();
     }
 
-    private void beforeUpdate(Map<id, Opportunity> oppMapOld, Map<id, Opportunity> oppMapNew) {
-        priorizationApprovalProcess(oppMapOld, oppMapNew);
+   /* public override void bulkBefore(){
+        //your logic may go here;
+    }*/
+
+    public override void bulkBefore() {
+        if(Trigger.isInsert) {
+            priorizationApprovalProcess(null, (Map<id,Opportunity>) Trigger.newMap);
+        } else if (Trigger.isUpdate) {
+            priorizationApprovalProcess((Map<id,Opportunity>) Trigger.oldMap, (Map<id,Opportunity>) Trigger.newMap);
+        }
     }
 
 

@@ -4,10 +4,10 @@
     <option name="connections">
       <list>
         <IlluminatedCloudConnection>
-          <option name="connectionName" value="Architekt_dx" />
+          <option name="connectionName" value="architectScratchOrg2" />
           <option name="connectionType" value="SFDX" />
           <option name="defaultModuleName" value="UAT_LL_DX" />
-          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/Architekt_dx/OfflineSymbolTable.zip" />
+          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/architectScratchOrg2/OfflineSymbolTable.zip" />
         </IlluminatedCloudConnection>
       </list>
     </option>

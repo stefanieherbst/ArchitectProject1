@@ -37,9 +37,9 @@ public with sharing class ApprovalStepTriggerHandler {
     }
 
     private void erstelleApprovalRequest(Map<id, id> userProcessIdMap) {
-        List<userAssignments__c> userToBeAssignedList = [Select Id, User__c from userAssignments__c where ApproverRole__c in :userProcessIdMap.keySet()];
+        List<userAssignment__c> userToBeAssignedList = [Select Id, User__c from userAssignment__c where ApproverRole__c in :userProcessIdMap.keySet()];
 
-        for (userAssignments__c userToBeAssigned : userToBeAssignedList) {
+        for (userAssignment__c userToBeAssigned : userToBeAssignedList) {
             approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
             req.setObjectId(userProcessIdMap.get(userToBeAssigned.user__C));
             req.setNextApproverIds(new Id[]{

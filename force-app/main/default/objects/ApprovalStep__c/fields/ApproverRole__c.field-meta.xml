@@ -5,8 +5,8 @@
     <externalId>false</externalId>
     <label>Approver Role</label>
     <referenceTo>ApproverRole__c</referenceTo>
-    <relationshipLabel>userAssignments</relationshipLabel>
-    <relationshipName>userAssignments</relationshipName>
+    <relationshipLabel>ApprovalSteps</relationshipLabel>
+    <relationshipName>ApprovalSteps</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

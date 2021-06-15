@@ -152,15 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>ApprovalStep</label>
+    <externalSharingModel>Private</externalSharingModel>
+    <label>Approver Role</label>
     <nameField>
-        <displayFormat>AS-{0000}</displayFormat>
-        <label>ApprovalStep Name</label>
-        <type>AutoNumber</type>
+        <label>Approver Role Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>ApprovalSteps</pluralLabel>
+    <pluralLabel>Approver Roles</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

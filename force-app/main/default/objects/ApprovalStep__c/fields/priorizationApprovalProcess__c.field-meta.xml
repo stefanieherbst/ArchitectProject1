@@ -3,7 +3,7 @@
     <fullName>priorizationApprovalProcess__c</fullName>
     <externalId>false</externalId>
     <label>priorizationApprovalProcess</label>
-    <referenceTo>priorizationApprovalProcess_c__c</referenceTo>
+    <referenceTo>priorizationApprovalProcess__c</referenceTo>
     <relationshipLabel>ApprovalSteps</relationshipLabel>
     <relationshipName>ApprovalSteps</relationshipName>
     <relationshipOrder>0</relationshipOrder>

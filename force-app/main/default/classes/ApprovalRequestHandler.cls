@@ -4,6 +4,8 @@
 
 public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension{
 
+    List<ApprovalStep__c> approvalStepUpdateList = new List<ApprovalStep__c>();
+
     public ApprovalRequestHandler(){
         super();
     }
@@ -19,12 +21,28 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
 
     private void initiiereApprovalProcesses(){
 
+
+
+        if(oldRequest.Decision__c == 'Not Decided' && newRequest.Decision__c != 'Not Decided'){
+            schreibeApprovalEntscheidungAufApprovalStep(newRequest);
+        }
     }
 
-    private void schreibeEntscheidungAufApprovalRequest(){
-
+    public override void andFinally(){
+        if(!approvalStepUpdateList.isEmpty()){
+            update approvalStepUpdateList;
+        }
     }
-    private void schreibeApprovalEntscheidungAufApprovalStep(){
 
+    public void initiiereApprovalProcesses(){
+    }
+
+    public void schreibeApprovalEntscheidungAufApprovalStep(ApprovalRequest__c request){
+        ApprovalStep__c parentStep = new ApprovalStep__c();
+
+        parentStep.Id = request.ApprovalStep__c;
+        parentStep.Decision__c = request.Decision__c;
+
+        approvalStepUpdateList.add(parentStep);
     }
 }

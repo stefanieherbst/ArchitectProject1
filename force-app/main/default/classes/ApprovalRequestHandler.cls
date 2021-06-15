@@ -10,9 +10,17 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
         super();
     }
 
-    public override void afterUpdate(SObject oldSObj,SObject newSObj){
-        ApprovalRequest__c oldRequest = (ApprovalRequest__c) oldSObj;
-        ApprovalRequest__c newRequest = (ApprovalRequest__c) newSObj;
+    public override void bulkBefore() {
+        if (Trigger.isInsert) {
+            initiiereApprovalProcesses();
+        } else if (Trigger.isUpdate){
+        schreibeEntscheidungAufApprovalRequest();
+        schreibeApprovalEntscheidungAufApprovalStep();
+    }
+    }
+
+    private void initiiereApprovalProcesses(){
+
 
 
         if(oldRequest.Decision__c == 'Not Decided' && newRequest.Decision__c != 'Not Decided'){

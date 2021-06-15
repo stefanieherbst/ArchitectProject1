@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>priorization__c</fullName>
+    <defaultValue>&apos;low&apos;</defaultValue>
+    <externalId>false</externalId>
+    <label>priorization</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>high</fullName>
+                <default>false</default>
+                <label>high</label>
+            </value>
+            <value>
+                <fullName>middle</fullName>
+                <default>false</default>
+                <label>middle</label>
+            </value>
+            <value>
+                <fullName>low</fullName>
+                <default>false</default>
+                <label>low</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

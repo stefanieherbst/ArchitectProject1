@@ -2,19 +2,19 @@
  * Created by StefanieHerbst on 6/2/2021.
  */
 
-public with sharing class priorizationApprovlProcessHandler  extends TriggerHandlerExtension{
+public with sharing class priorizationApprovlProcessHandler extends TriggerHandlerExtension{
 
     public priorizationApprovlProcessHandler(){
         super();
     }
 
-    private void beforeInsert(List<priorizationApprovalProcess__c> listNew) {
-        erstelleApprovalStepsmitHilfeVonMatrix(listNew);
-    }
-
-    private void beforeUpdate(List<priorizationApprovalProcess__c> listNew) {
-        updateStatusAufOpportunity(listNew);
-        setztePriorizationApprovalProcessInaktiv(listNew);
+    public override void bulkAfter() {
+        if(Trigger.isInsert) {
+            erstelleApprovalStepsmitHilfeVonMatrix(Trigger.new);
+        } else if (Trigger.isUpdate) {
+            updateStatusAufOpportunity(Trigger.new);
+            setztePriorizationApprovalProcessInaktiv(Trigger.new);
+        }
     }
 
     private void erstelleApprovalStepsmitHilfeVonMatrix(List<priorizationApprovalProcess__c> listNew) {

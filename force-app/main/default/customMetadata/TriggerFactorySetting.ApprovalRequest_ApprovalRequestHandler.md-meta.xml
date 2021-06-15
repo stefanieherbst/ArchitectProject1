@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>SObjectName__c</field>
-        <value xsi:type="xsd:string">ApprovalRequest</value>
+        <value xsi:type="xsd:string">ApprovalRequest__c</value>
     </values>
 </CustomMetadata>

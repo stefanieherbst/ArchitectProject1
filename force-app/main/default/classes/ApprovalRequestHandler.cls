@@ -8,6 +8,15 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
         super();
     }
 
+    public override void bulkBefore() {
+        if (Trigger.isInsert) {
+            initiiereApprovalProcesses();
+        } else if (Trigger.isUpdate){
+        schreibeEntscheidungAufApprovalRequest();
+        schreibeApprovalEntscheidungAufApprovalStep();
+    }
+    }
+
     private void initiiereApprovalProcesses(){
 
     }
@@ -18,6 +27,4 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
     private void schreibeApprovalEntscheidungAufApprovalStep(){
 
     }
-
-
 }

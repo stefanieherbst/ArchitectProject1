@@ -64,7 +64,7 @@ public with sharing class ApprovalStepHandler extends TriggerHandlerExtension{
 
         for (userAssignment__c userToBeAssigned : userToBeAssignedList) {
             ApprovalRequest__c appReq = new ApprovalRequest__c();
-            appReq.User__c = userToBeAssigned.User__c;
+            appReq.Approver__c = userToBeAssigned.User__c;
             appReq.ApprovalStep__c = userProcessIdMap.get(userToBeAssigned.ApproverRole__c);
             System.debug( 'appReq : ' + appReq);
 

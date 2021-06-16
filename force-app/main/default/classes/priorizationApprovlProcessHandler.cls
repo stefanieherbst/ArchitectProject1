@@ -19,13 +19,13 @@ public with sharing class priorizationApprovlProcessHandler extends TriggerHandl
 
     private void erstelleApprovalStepsmitHilfeVonMatrix(List<priorizationApprovalProcess__c> listNew) {
         List<ApprovalStep__c> appStepList = new List <ApprovalStep__c>();
-
         for(priorizationApprovalProcess__c process : listNew){
             ApprovalStep__c appStep = new ApprovalStep__c();
             appStep.priorizationApprovalProcess__c = process.id;
+            appStep.Decision__c = 'Not Decided';
             appStepList.add(appStep);
         }
-
+        System.debug('insert approvalstep: ' + appStepList);
         if (!appStepList.isEmpty() && appStepList != null) {
             insert appStepList;
         }

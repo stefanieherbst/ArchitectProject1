@@ -10,15 +10,25 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
         super();
     }
 
-    public override void afterUpdate(SObject oldSObj,SObject newSObj){
-        ApprovalRequest__c oldRequest = (ApprovalRequest__c) oldSObj;
-        ApprovalRequest__c newRequest = (ApprovalRequest__c) newSObj;
+    public override void bulkAfter() {
+        System.debug('approvalRequestHandlerInsert1');
+        if (Trigger.isInsert) {
+            System.debug('approvalRequestHandlerInsert');
+            initiiereApprovalProcesses(Trigger.new);
+        } else if (Trigger.isUpdate){
+        //schreibeEntscheidungAufApprovalRequest();
+        //schreibeApprovalEntscheidungAufApprovalStep();
+    }
+    }
+
+  /*  private void initiiereApprovalProcesses(){
+
 
 
         if(oldRequest.Decision__c == 'Not Decided' && newRequest.Decision__c != 'Not Decided'){
             schreibeApprovalEntscheidungAufApprovalStep(newRequest);
         }
-    }
+    }*/
 
     public override void andFinally(){
         if(!approvalStepUpdateList.isEmpty()){
@@ -26,7 +36,17 @@ public with sharing class ApprovalRequestHandler extends TriggerHandlerExtension
         }
     }
 
-    public void initiiereApprovalProcesses(){
+    public void initiiereApprovalProcesses(List<ApprovalRequest__c> newList){
+        System.debug('approverprocess : ' + newList);
+        for (ApprovalRequest__c appReq : newList) {
+            approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+            req.setObjectId(appReq.id);
+            req.setNextApproverIds(new Id[]{
+                    appReq.Approver__c
+            });
+            System.debug('req: ' + req);
+            Approval.ProcessResult result = Approval.process(req);
+            System.debug('result: ' + result);        }
     }
 
     public void schreibeApprovalEntscheidungAufApprovalStep(ApprovalRequest__c request){

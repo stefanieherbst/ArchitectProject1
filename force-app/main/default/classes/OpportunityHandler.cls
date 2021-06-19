@@ -8,11 +8,7 @@ public class OpportunityHandler extends TriggerHandlerExtension{
         super();
     }
 
-   /* public override void bulkBefore(){
-        //your logic may go here;
-    }*/
-
-    public override void bulkBefore() {
+    public override void bulkAfter() {
         if(Trigger.isInsert) {
             priorizationApprovalProcess(null, (Map<id,Opportunity>) Trigger.newMap);
         } else if (Trigger.isUpdate) {
@@ -30,7 +26,7 @@ public class OpportunityHandler extends TriggerHandlerExtension{
     private List<Opportunity> checkIfPrioIsDefaultOrHasChanged(Map<id, Opportunity> oppMapOld, Map<id, Opportunity> oppMapNew) {
         List<Opportunity> oppList = new List <Opportunity>();
         for (Opportunity opp : oppMapNew.values()) {
-            if (opp.priorization__c == 'high' && (oppMapOld.keySet().isEmpty() || opp.priorization__c != oppMapOld.get(opp.id).priorization__c)) {
+            if (opp.priorization__c == 'high' && (oppMapOld == null || oppMapOld.isEmpty() || oppMapOld.get(opp.id) == null || opp.priorization__c != oppMapOld.get(opp.id).priorization__c)) {
                 oppList.add(opp);
             }
         }
@@ -56,12 +52,19 @@ public class OpportunityHandler extends TriggerHandlerExtension{
 
     private void erstellePriorizationApprovalProcess(List<Opportunity> oppList) {
         if (!oppList.isEmpty() && oppList != null) {
-            List <priorizationApprovalProcess__c> approvalProsessList = new List<priorizationApprovalProcess__c>();
+            List <priorizationApprovalProcess__c> approvalProcessList = new List<priorizationApprovalProcess__c>();
             for (Opportunity opp : oppList) {
                 priorizationApprovalProcess__c prioApprovalProcess = new priorizationApprovalProcess__c();
-                approvalProsessList.add(prioApprovalProcess);
+                prioApprovalProcess.Opportunity__c = opp.id;
+                approvalProcessList.add(prioApprovalProcess);
             }
-            insert approvalProsessList;
+            lstInsert.addAll(approvalProcessList);
+        }
+    }
+
+    public override void andFinally(){
+        if(!lstInsert.isEmpty()){
+            insert lstInsert;
         }
     }
 }

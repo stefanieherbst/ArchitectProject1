@@ -3,7 +3,7 @@
     <fullName>Decision__c</fullName>
     <externalId>false</externalId>
     <label>Decision</label>
-    <required>true</required>
+    <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -11,19 +11,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Not Decided</fullName>
+                <fullName>approved</fullName>
                 <default>false</default>
-                <label>Not Decided</label>
+                <label>approved</label>
             </value>
             <value>
-                <fullName>Approved</fullName>
+                <fullName>denied</fullName>
                 <default>false</default>
-                <label>Approved</label>
-            </value>
-            <value>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-                <label>Rejected</label>
+                <label>denied</label>
             </value>
         </valueSetDefinition>
     </valueSet>
